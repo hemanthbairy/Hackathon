@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+    <form-beans>
+    	<form-bean name="LogGenForm" type="com.vz.forms.LogGenForm"/>
+    	<form-bean name="MonitoringForm" type="com.vz.forms.MonitoringForm"/>
+    </form-beans>
+
+	<global-forwards>
+        <forward name="LogGen" path="/LogGen.do"/>
+    </global-forwards>
+    
+    <action-mappings>
+        <action path="/LogGen" type="com.vz.actions.LogGenAction" name="LogGenForm">
+        	<forward name="success" path="/logGen.jsp" />
+        </action>    
+        <action path="/StartMonitoring" type="com.vz.actions.Monitoring" name="MonitoringForm">
+        	<forward name="success" path="/monitor.jsp" />
+        </action> 
+    </action-mappings>
+    
+
+</struts-config>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<Configuration status="WARN">
+<Properties>
+<Property name="log-path" >C:/Logs/WebAppLogs</Property>
+</Properties>
+	   
+<Appenders>
+	<RollingFile name="app-log" fileName="${log-path}/logfile.log" filePattern="${log-path}/logfile-%d{yyyy-MM-dd}.log" >
+		<PatternLayout>
+			<Pattern>%logger : %x : %d %p %level [%c{1}: %M() %X{userHostName} Line#%L %t] - %m%n %ex</Pattern>
+		</PatternLayout>
+		<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+	</RollingFile>
+	
+	
+	<JDBC name="db-log" tableName="hackathon.app_log_table"  >
+	<ConnectionFactory class="com.vz.util.ConnectionFactory" method="getDatabaseConnection" />
+	<Column name="event_date" isEventTimestamp="true"  />
+	<Column name="location" pattern="%l" />
+	 <Column name="log_level" pattern="%level" />
+	<Column name="logger" pattern="%logger" />
+	<Column name="message" pattern="%message" />
+	<Column name="logger_line_num" pattern="%L" />
+	<Column name="thread_name" pattern="%t" />
+	<!-- <Column name="client_id" pattern="" /> -->
+	<Column name="class_name" pattern="%c" />
+	<Column name="ex_short" pattern="%throwable{short}" />
+	<Column name="ex_class_name" pattern="%throwable{short.className}" />
+	<Column name="ex_file_name" pattern="%throwable{short.fileName}" />
+	<Column name="ex_line_num" pattern="%throwable{short.lineNumber}" />
+	<Column name="ex_method" pattern="%throwable{short.methodName}" />
+	<Column name="ex_localized_msg" pattern="%throwable{short.localizedMessage}" />
+	<Column name="ex_full" pattern="%throwable{full}" isClob="true" />
+	<!--<Column name="nested_diagnostic_context" pattern="" />
+	<Column name="mapped_diagnostic_context" pattern="" /> -->
+	</JDBC>
+	
+</Appenders>
+
+<Loggers>
+       <Root level="info" additivity="false">
+	            <AppenderRef ref="app-log" />
+	            <AppenderRef ref="db-log" level="warn" />
+       </Root>
+     <!-- <logger name="javabeat.net.util" level="info" /> -->
+        <!-- <Root level="ERROR">
+           <AppenderRef ref="CONSOLE"/>
+        </Root> -->
+</Loggers>
+</Configuration>
