@@ -12,7 +12,8 @@ public class ValidationService {
 	}
 	public void validateRequest(String expFlag){
 		logger.warn("User have not given password.");
-		logger.error("Validation Failed.");
+		//logger.error("Validation Failed.",new Exception("Mobile digit number is not 10"));
+		logger.error("Exception happened while getting DataBase connection.",new Exception("Unable to get DataBase connection. DataBase might be down."));
 	}
 	//have exception in its one of the methods
 }

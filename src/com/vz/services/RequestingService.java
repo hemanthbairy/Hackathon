@@ -13,7 +13,7 @@ public class RequestingService {
 			for(int j=100;j>0;j--){
 				//nothing just time gap
 			}
-			if(i==50){
+			if(i==50 && id==10){
 				valService.validateRequest("50");
 			}else{
 				valService.validateRequest();
