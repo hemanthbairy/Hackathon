@@ -2,7 +2,7 @@ package com.vz.forms;
 
 import org.apache.struts.action.ActionForm;
 
-public class MonitoringForm extends ActionForm  {
+public class MonitorForm extends ActionForm  {
 	
 	private String message;
 	 

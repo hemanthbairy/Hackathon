@@ -8,14 +8,14 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.vz.forms.MonitoringForm;
+import com.vz.forms.MonitorForm;
 
-public class MonitoringAction extends Action{
+public class MonitorAction extends Action{
 
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		MonitoringForm monitoringForm = (MonitoringForm) form;
-		monitoringForm.setMessage("Monitoring services started.");
+		MonitorForm monitorForm = (MonitorForm) form;
+		monitorForm.setMessage("Monitoring services started.");
 		
 	return mapping.findForward("success");
 	}

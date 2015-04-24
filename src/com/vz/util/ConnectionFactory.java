@@ -32,7 +32,7 @@ public class ConnectionFactory {
         /*GenericObjectPool<PoolableConnection> pool = new GenericObjectPool<PoolableConnection>();*/
         GenericObjectPool pool = new GenericObjectPool();
         DriverManagerConnectionFactory connectionFactory = new DriverManagerConnectionFactory(
-                "jdbc:oracle:thin:@//localhost:1521/xe", properties
+                "jdbc:oracle:thin:@//113.128.162.73:1521/xe", properties
         );
         new PoolableConnectionFactory(
                 connectionFactory, pool, null, "SELECT 1", 3, false, false, Connection.TRANSACTION_READ_COMMITTED

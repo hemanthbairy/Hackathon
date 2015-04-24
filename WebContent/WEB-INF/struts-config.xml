@@ -8,7 +8,7 @@
 
     <form-beans>
     	<form-bean name="LogGenForm" type="com.vz.forms.LogGenForm"/>
-    	<form-bean name="MonitoringForm" type="com.vz.forms.MonitoringForm"/>
+    	<form-bean name="MonitorForm" type="com.vz.forms.MonitorForm"/>
     </form-beans>
 
 	<global-forwards>
@@ -19,7 +19,7 @@
         <action path="/LogGen" type="com.vz.actions.LogGenAction" name="LogGenForm">
         	<forward name="success" path="/logGen.jsp" />
         </action>    
-        <action path="/StartMonitoring" type="com.vz.actions.Monitoring" name="MonitoringForm">
+        <action path="/Monitor" type="com.vz.actions.MonitorAction" name="MonitorForm">
         	<forward name="success" path="/monitor.jsp" />
         </action> 
     </action-mappings>
