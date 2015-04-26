@@ -48,6 +48,7 @@ Monitoring Services are running.
         <th>Ex:ClassName</th>
         <th>Ex:File #Line</th>
         <th>Ex:Method</th>
+        <th>User</th>
         <!-- <th>Ex:L</th> -->
       </tr>
     </thead>
@@ -115,7 +116,8 @@ function pollLog(){
 					$('<td>').html(val.ex_short),
 					$('<td>').html(val.ex_class_name),
 					$('<td>').html(val.ex_file_name+" #"+val.ex_line_num),
-					$('<td>').html(val.ex_method)
+					$('<td>').html(val.ex_method),
+					$('<td>').html(val.client_id)
 					
 				);
 				//$tr.appendTo($table);

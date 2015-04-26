@@ -75,7 +75,7 @@ public class DataHandler {
 		StringBuffer sql = new StringBuffer();
 		sql.append("select to_char(event_date,'MM/DD/YYYY HH:MI:SS PM') event_date ");
 		sql.append(" , log_level, message,logger,logger_line_num , ex_short, ex_class_name, ex_file_name, ex_line_num,ex_method,ex_localized_msg ");
-		sql.append(" ,ex_full ");
+		sql.append(" ,ex_full,client_id ");
 		sql.append(" from app_log_table where to_char(event_date,'MM/DD/YYYY HH:MI:SS PM') > '"+eventTS+"'  order by 1 asc");
 		//System.out.println("pullLog:"+sql);
 		try{
@@ -102,6 +102,7 @@ public class DataHandler {
 					logBean.setEx_line_num(Utils.putNbsp(rs.getString("ex_line_num")));
 					logBean.setEx_method(Utils.putNbsp(rs.getString("ex_method")));
 					logBean.setEx_localized_msg(Utils.putNbsp(rs.getString("ex_localized_msg")));
+					logBean.setClient_id(Utils.putNbsp(rs.getString("client_id")));
 					//System.out.println(Utils.putNbsp(rs.getString("event_date")));
 					
 					//Check for Keyword's presence and alert if present

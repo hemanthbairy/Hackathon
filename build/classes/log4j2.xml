@@ -7,7 +7,8 @@
 <Appenders>
 	<RollingFile name="app-log" fileName="${log-path}/logfile.log" filePattern="${log-path}/logfile-%d{yyyy-MM-dd}.log" >
 		<PatternLayout>
-			<Pattern>%logger : %x : %d %p %level [%c{1}: %M() %X{userHostName} Line#%L %t] - %m%n %ex</Pattern>
+			<!-- <Pattern>%logger : %x : %d %p %level [%c{1}: %M() %X{ipUser} Line#%L %t] - %m%n %ex</Pattern> -->
+			<Pattern>%d %level [%c{1} : %M() %X{ipUser} Line#%L %t] - %m%n %ex</Pattern>
 		</PatternLayout>
 		<TimeBasedTriggeringPolicy interval="1" modulate="true" />
 	</RollingFile>
@@ -22,7 +23,7 @@
 	<Column name="message" pattern="%message" />
 	<Column name="logger_line_num" pattern="%L" />
 	<Column name="thread_name" pattern="%t" />
-	<!-- <Column name="client_id" pattern="" /> -->
+	<Column name="client_id" pattern="%X{ipUser}" />
 	<Column name="class_name" pattern="%c" />
 	<Column name="ex_short" pattern="%throwable{short}" />
 	<Column name="ex_class_name" pattern="%throwable{short.className}" />
