@@ -37,7 +37,7 @@ out.print("Generating Logs");
 
 //Call Different files (multiple times) here for writing logs
 
-logger.warn("Application is up.");
+logger.warn("Application is up. Accessing timberland.");
 logger.info("Start the workflow. ");
 logger.warn("Warn log.", new Exception("Pavneet Raised a question"));
 System.out.println("done writing Start up logs ... starting continuous logging mechanism");
