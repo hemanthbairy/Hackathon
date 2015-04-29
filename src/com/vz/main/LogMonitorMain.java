@@ -18,7 +18,13 @@ public class LogMonitorMain {
 
 		//Reading Properties File for keyWords
 		//String emKeyWords = "";
-		File f = new File(Utils.getHackathonpropsfilepath());//get this value in arguments
+		String propsFilePath = "";
+		if(args.length >0 && args[0] != null){
+			propsFilePath=args[0];
+		}else{
+			propsFilePath=Utils.getHackathonpropsfilepath();
+		}
+		File f = new File(propsFilePath);//get this value in arguments
 		Properties prop = new Properties();
 		if(f.exists()){
 			try{
@@ -30,9 +36,12 @@ public class LogMonitorMain {
 			}catch(Exception e){
 				System.out.println("caught Exception while loading properties file.\n"+e);
 			}
+		}else{
+			System.out.println("Shutting Down : Properties file not found at "+propsFilePath);
+			System.exit(0);
 		}
 		System.out.println("===========================================");
-		System.out.println("Properties file loaded:");
+		System.out.println("Properties file loaded from :"+propsFilePath);
 		System.out.println("Monitoring for keywords:"+emKeyWords);
 		System.out.println("===========================================");
 		
@@ -52,7 +61,7 @@ public class LogMonitorMain {
 			System.exit(0);
 		}
 		//File exists for below code
-		System.out.println("LogFile found.");
+		System.out.println("LogFile found at "+logFilePath);
 		System.out.println("=====================Monitoring======================");
 		
 		try{
@@ -108,7 +117,7 @@ public class LogMonitorMain {
 				String token = st.nextToken();
 				if(logMessage.toUpperCase().contains(token.toUpperCase())){
 					isKeyWordPresent = true;
-					//System.out.println(token.toUpperCase()+":::FOUND.");
+					System.out.println("Alert !! "+token.toUpperCase());
 					
 					//Email - subject formation
 					subject=token.toUpperCase()+": HIT ";
