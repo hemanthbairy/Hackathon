@@ -46,6 +46,8 @@ System.out.println("done writing Start up logs ... starting continuous logging m
 ParentService parentService = new ParentService();
 parentService.startServices();
 
+out.println("<br>Logging Finished ");
+
 //have thread so that no order is found and have some sleep times for 3 threads.
 
 %>

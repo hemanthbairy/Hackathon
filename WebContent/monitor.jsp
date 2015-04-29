@@ -18,11 +18,13 @@
 </head>
 <body>
 <div class="container" >
-Monitoring Services are running.
+<div class="jumbotron" >
+<h2>Monitoring Services are running.</h2>
 <br>Latest TimeStamp recorded : <bean:write name="MonitorForm" property="latestEventTS" />
 <br>New Latest TS recorded : <span id="newLTS"></span>
 <br>KeyWords for e-mail alert : <bean:write name="MonitorForm" property="emKeyWords" />
 <br>
+</div>
 
 <input id="idLatestEventTSOnLoad" type="hidden" value="<bean:write name="MonitorForm" property="latestEventTS" />" />
 <input id="idLatestEventTS" type="hidden" value="<bean:write name="MonitorForm" property="latestEventTS" />" />
@@ -35,6 +37,12 @@ Monitoring Services are running.
 
 
 <button type="button" disabled onclick="checkLog();" class="btn btn-default">Click to check for Errors</button>
+<button type="button" class="btn btn-default"  onclick="stopMonitor();">STOP MONITOR</button>
+<div class="panel panel-default">
+  <div class="panel-body bold" id="keepMonitoring" value="Y"  >Press stop monitor button to stop monitoring.</div>
+</div>
+<span style="" id="firstTime" val="N" ></span>
+
 <br>
 <div id="output" style="overflow:auto; width:100% ; max-height:500px; border:0px red solid; " >
 <table class="table table-condensed table-hover table-bordered" style="font-size:14px;" >
@@ -140,12 +148,12 @@ function pollLog(){
 
 <!--  polling code below -->
 <br><br>
-<div class="panel panel-default">
-  <div class="panel-body" id="keepMonitoring" value="Y"  >Press stop monitor button to stop monitoring.</div>
+<!-- <div class="panel panel-default">
+  <div class="panel-body bold" id="keepMonitoring" value="Y"  >Press stop monitor button to stop monitoring.</div>
 </div>
 
 <span style="" id="firstTime" val="N" ></span>
-<button type="button" class="btn btn-default"  onclick="stopMonitor();">STOP MONITOR</button>
+<button type="button" class="btn btn-default"  onclick="stopMonitor();">STOP MONITOR</button> -->
 
 <script defer>
 function stopMonitor(){
